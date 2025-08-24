@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useGetBooksQuery } from "@/redux/features/api/apiSlice";
+import { useGetBooksQuery } from "@/redux/features/api/bookSlice";
 import { Link } from "react-router";
 import type { Book } from "@/type/BookType";
 import { Loader2 } from "lucide-react";

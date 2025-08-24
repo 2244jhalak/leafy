@@ -1,14 +1,14 @@
-import { useGetBooksQuery } from "@/redux/features/api/apiSlice";
+import { useGetBooksQuery, useDeleteBookMutation } from "@/redux/features/api/bookSlice";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Loader2, CheckCircle2, XCircle, Pencil, Trash2, BookOpen } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
 
 const AllBooksHome = () => {
   const { data, isLoading, isError } = useGetBooksQuery({ limit: 9999 });
-
-  console.log(data);
+  const [deleteBook] = useDeleteBookMutation();
 
   if (isLoading) {
     return (
@@ -26,8 +26,38 @@ const AllBooksHome = () => {
     );
   }
 
-  // এখানে মূল বইয়ের array বের করা হলো
   const books = data?.data?.data || [];
+
+  // ✅ Delete Handler with SweetAlert
+  const handleDelete = async (id: string, title: string) => {
+    const result = await Swal.fire({
+      title: `Delete "${title}"?`,
+      text: "Are you sure you want to delete this book? This action cannot be undone.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await deleteBook(id).unwrap();
+        Swal.fire({
+          icon: "success",
+          title: "Deleted!",
+          text: `"${title}" has been deleted successfully.`,
+        });
+      } catch (error: any) {
+        Swal.fire({
+          icon: "error",
+          title: "Delete Failed",
+          text: error?.data?.message || "Something went wrong while deleting.",
+        });
+      }
+    }
+  };
 
   return (
     <Card className="p-4 mt-4 overflow-x-auto">
@@ -52,12 +82,19 @@ const AllBooksHome = () => {
             return (
               <TableRow key={book._id}>
                 <TableCell>
-                  <img
-                    src={book.image}
-                    alt={book.title}
-                    className="w-12 h-16 object-cover rounded"
-                  />
+                  {book.image ? (
+                    <img
+                      src={book.image}
+                      alt={book.title}
+                      className="w-12 h-16 object-cover rounded"
+                    />
+                  ) : (
+                    <div className="w-12 h-16 bg-gray-200 flex items-center justify-center text-xs text-gray-500 rounded">
+                      No Cover
+                    </div>
+                  )}
                 </TableCell>
+
                 <TableCell>{book.title}</TableCell>
                 <TableCell>{book.author}</TableCell>
                 <TableCell>{book.genre}</TableCell>
@@ -88,7 +125,12 @@ const AllBooksHome = () => {
                       </Button>
                     </Link>
                   ) : (
-                    <Button variant="outline" size="icon" disabled title="Not available for borrow">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      disabled
+                      title="Not available for borrow"
+                    >
                       <BookOpen className="w-4 h-4" />
                     </Button>
                   )}
@@ -97,9 +139,7 @@ const AllBooksHome = () => {
                   <Button
                     variant="destructive"
                     size="icon"
-                    onClick={() => {
-                      // handle delete logic here
-                    }}
+                    onClick={() => handleDelete(book._id, book.title)}
                   >
                     <Trash2 className="w-4 h-4" />
                   </Button>

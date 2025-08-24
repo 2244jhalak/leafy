@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { useGetBookByIdQuery } from "@/redux/features/api/apiSlice";
+import { useGetBookByIdQuery } from "@/redux/features/api/bookSlice";
 import EditBookForm from "../EditBook/EditBookForm"; 
 import Navbar from "../Main/Home/Navbar";
 import { Loader2 } from "lucide-react";

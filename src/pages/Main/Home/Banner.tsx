@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 import Cover from "../../../assets/cover.jpg";
 import Book from "../../../assets/marhaba.jpg";
 
@@ -17,15 +18,17 @@ const Banner = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="text-3xl md:text-6xl font-bold mb-4">
-              Get Your New<br />Book Collections
+            <h1 className="text-3xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-white">
+              Discover, Borrow <br /> & Enjoy Your Favorite Books
             </h1>
-            <p className="mb-6 text-lg md:text-xl">
-              Explore a wide variety of genres and authors. Perfect picks for your every mood.
+            <p className="mb-6 text-lg md:text-xl text-gray-700 dark:text-gray-300">
+              Browse our curated collection of books, borrow easily, and dive into a world of stories.
             </p>
-            <button className="bg-black rounded-xl text-white px-4 py-2 hover:bg-gray-800 transition">
-              Explore More
-            </button>
+            <Link to="/books">
+              <button className="bg-black dark:bg-white dark:text-black rounded-xl text-white px-6 py-3 hover:bg-gray-800 dark:hover:bg-gray-200 transition shadow-lg">
+                Explore More
+              </button>
+            </Link>
           </motion.div>
 
           {/* Book Image Animation */}
@@ -33,8 +36,9 @@ const Banner = () => {
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1 }}
+            className="drop-shadow-2xl"
           >
-            <img src={Book} alt="Book" className="w-[200px] md:w-[300px]" />
+            <img src={Book} alt="Book" className="w-[200px] md:w-[300px] rounded-lg" />
           </motion.div>
 
         </div>
