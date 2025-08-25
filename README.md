@@ -1,69 +1,92 @@
-# React + TypeScript + Vite
+# Leafy - Minimal Library Management System 📚
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Leafy** is a minimal library management system built with **React**, **TypeScript**, **Redux Toolkit Query (RTK Query)**, and **Tailwind CSS**. The system allows users to view books, perform CRUD operations, borrow books, and see a simple borrow summary—all without authentication or payment integration.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Features
 
-## Expanding the ESLint configuration
+### 1. Public Routes 🚀
+- All pages are accessible without login or authentication.
+- Focused on core book and borrowing functionalities.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 2. Book Management 🛠️
+- **Book List Table**
+  - Columns: Title, Author, Genre, ISBN, Copies, Availability, Actions
+- **Actions**
+  - **Edit Book**: Update book info with real-time UI update.
+  - **Delete Book**: Confirmation before removal.
+  - **Borrow Book**: Opens a borrow form.
+- **Add New Book**
+  - Fields: Title, Author, Genre, ISBN, Description, Copies, Available (optional, defaults true)
+  - Redirects to book list and updates UI immediately.
+- **Business Logic**
+  - Book marked unavailable if copies = 0.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 3. Borrow Book
+- Form includes **quantity input**.
+- Quantity cannot exceed available copies.
+- Submit via API with success/error feedback.
+- Redirects to borrow summary after success.
+- Borrow date is automatically handled by the backend.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### 4. Borrow Summary
+- Displays aggregated list of borrowed books.
+- Columns: Book Title, ISBN, Total Quantity Borrowed.
+- Retrieved from aggregation API.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🏠 Landing Page Components
+- **Navbar**: Links to All Books, Add Book, Borrow Summary.
+- **Book Table/List/Grid**: Displays books with core actions.
+- **Footer**: Site info or credits.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📄 Pages
+| Route | Description |
+|-------|-------------|
+| `/books` | List of all books with view, edit, delete, and borrow options |
+| `/create-book` | Form to add a new book |
+| `/books/:id` | Detailed view of a single book |
+| `/edit-book/:id` | Update an existing book |
+| `/borrow/:bookId` | Form to borrow a selected book |
+| `/borrow-summary` | Aggregated summary of borrowed books |
+
+---
+
+## 🎨 UI/UX
+- Minimalist and clean UI using **Tailwind CSS**.
+- Fully responsive layout for mobile, tablet, and desktop.
+- Easy navigation and clearly labeled buttons and forms.
+
+---
+
+## ⚡ Bonus Features
+| Feature | Bonus |
+|---------|-------|
+| Optimistic UI Updates | +2 |
+| Toast Notifications | +2 |
+| Responsive Layout | +4 |
+| Type-Safe Forms | +2 |
+
+---
+
+## 🛠️ Tech Stack
+- React
+- TypeScript
+- Redux Toolkit Query (RTK Query)
+- Tailwind CSS
+- SweetAlert2
+- Vite
+
+---
+
+## 🚀 How to Run Locally
+1. Clone the repo:
+
+```bash
+git clone https://github.com/2244jhalak/leafy.git
+cd leafy
+
