@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router";
-import Cover from "../../../assets/cover.jpg";
+import BannerImage from "../../../assets/banner.jpg";
 import Book from "../../../assets/marhaba.jpg";
 
 const Banner = () => {
   return (
     <div className="relative w-full h-screen">
-      <img src={Cover} alt="Cover" className="w-full h-full object-cover" />
+      <img src={BannerImage} alt="Cover" className="w-full h-full object-cover" />
 
       <div className="container mx-auto">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col md:flex-row items-center justify-between w-full px-6 md:px-52 gap-10">
