@@ -28,7 +28,7 @@ const totalPages: number = data?.data?.totalPages || 1;
 
   return (
     <div className="container mx-auto p-6">
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {books.map((book: Book) => (
           <div
             key={book._id}
@@ -37,7 +37,7 @@ const totalPages: number = data?.data?.totalPages || 1;
             <img
               src={book.image}
               alt={book.title}
-              className="h-[420px] w-full px-20 object-cover"
+              className="h-[420px] w-full md:px-6 lg:px-20 px-20 object-cover"
             />
             <div className="p-4 flex flex-col flex-grow">
               <h2 className="text-xl font-bold mb-1">{book.title}</h2>
