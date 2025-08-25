@@ -1,4 +1,3 @@
-
 import { useGetBookByIdQuery, useGetBooksQuery } from "@/redux/features/api/bookSlice";
 import { useBorrowBookMutation } from "@/redux/features/api/borrowSlice";
 import { useParams, useNavigate } from "react-router";
@@ -18,12 +17,12 @@ const BorrowPage = () => {
   const [loading, setLoading] = useState(false);
   const [showContent, setShowContent] = useState(false);
 
+  const { refetch: refetchBooks } = useGetBooksQuery({ limit: 9999 });
+
   useEffect(() => {
     const timer = setTimeout(() => setShowContent(true), 300);
     return () => clearTimeout(timer);
   }, []);
-
-  const { refetch: refetchBooks } = useGetBooksQuery({ limit: 9999 });
 
   if (!showContent || isLoading) {
     return (
@@ -48,7 +47,7 @@ const BorrowPage = () => {
   }
 
   const book = data.data;
-  const isAvailable = book.available && book.copies > 0; // ✅ availability check
+  const isAvailable = book.available && book.copies > 0;
 
   const handleBorrow = async () => {
     if (quantity < 1 || quantity > book.copies) {
@@ -105,16 +104,27 @@ const BorrowPage = () => {
             </div>
           </div>
         ) : (
-          <div className="flex items-center gap-2 mb-4">
-            <input
-              type="number"
-              min={1}
-              max={book.copies}
-              value={quantity}
-              onChange={(e) => setQuantity(Number(e.target.value))}
-              className="w-20 px-2 py-1 border rounded"
-            />
-            <Button onClick={handleBorrow} disabled={loading}>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleBorrow();
+            }}
+            className="flex flex-col gap-4"
+          >
+            <div className="flex items-center gap-2">
+              <label className="w-28 font-medium">Quantity:</label>
+              <input
+                type="number"
+                min={1}
+                max={book.copies}
+                value={quantity}
+                onChange={(e) => setQuantity(Number(e.target.value))}
+                className="w-20 px-2 py-1 border rounded"
+                required
+              />
+            </div>
+
+            <Button type="submit" disabled={loading}>
               {loading ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
               ) : (
@@ -122,7 +132,7 @@ const BorrowPage = () => {
               )}
               <span className="ml-2">Borrow</span>
             </Button>
-          </div>
+          </form>
         )}
       </Card>
     </>
