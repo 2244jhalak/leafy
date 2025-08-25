@@ -64,8 +64,8 @@
 ---
 
 ## ⚡ Bonus Features
-| Feature | Bonus |
-|---------|-------|
+| Feature |
+|---------|
 | Optimistic UI Updates |
 | Toast Notifications |
 | Responsive Layout |
