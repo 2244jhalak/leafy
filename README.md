@@ -66,10 +66,10 @@
 ## ⚡ Bonus Features
 | Feature | Bonus |
 |---------|-------|
-| Optimistic UI Updates | +2 |
-| Toast Notifications | +2 |
-| Responsive Layout | +4 |
-| Type-Safe Forms | +2 |
+| Optimistic UI Updates |
+| Toast Notifications |
+| Responsive Layout |
+| Type-Safe Forms |
 
 ---
 
