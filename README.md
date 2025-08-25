@@ -89,4 +89,6 @@
 ```bash
 git clone https://github.com/2244jhalak/leafy.git
 cd leafy
+npm install
+npm run dev
 
