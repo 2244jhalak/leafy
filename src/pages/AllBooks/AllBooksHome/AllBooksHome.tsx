@@ -28,7 +28,7 @@ const AllBooksHome = () => {
 
   const books = data?.data?.data || [];
 
-  // ✅ Delete Handler with SweetAlert
+  
   const handleDelete = async (id: string, title: string) => {
     const result = await Swal.fire({
       title: `Delete "${title}"?`,
@@ -112,7 +112,7 @@ const AllBooksHome = () => {
                 <TableCell className="flex gap-2 justify-center">
                   {/* ✏️ Edit */}
                   <Link to={`/edit-book/${book._id}`}>
-                    <Button variant="outline" size="icon">
+                    <Button  className="cursor-pointer" variant="outline" size="icon">
                       <Pencil className="w-4 h-4" />
                     </Button>
                   </Link>
@@ -120,12 +120,13 @@ const AllBooksHome = () => {
                   {/* 📚 Borrow */}
                   {isAvailable ? (
                     <Link to={`/borrow/${book._id}`}>
-                      <Button variant="outline" size="icon" title="Borrow book">
+                      <Button  className="cursor-pointer" variant="outline" size="icon" title="Borrow book">
                         <BookOpen className="w-4 h-4" />
                       </Button>
                     </Link>
                   ) : (
                     <Button
+                      className="cursor-pointer"
                       variant="outline"
                       size="icon"
                       disabled
@@ -137,6 +138,7 @@ const AllBooksHome = () => {
 
                   {/* 🗑️ Delete */}
                   <Button
+                    className="cursor-pointer"
                     variant="destructive"
                     size="icon"
                     onClick={() => handleDelete(book._id, book.title)}

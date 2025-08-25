@@ -1,11 +1,11 @@
-// src/redux/features/api/borrowSlice.ts
+
 import type { Borrow, BorrowRequest, BorrowSummary } from '@/type/BorrowType';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const borrowApi = createApi({
   reducerPath: 'borrowApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://b5-a3-rosy.vercel.app/api/borrow',
+    baseUrl: `${import.meta.env.VITE_SERVER_LINK}/api/borrow`,
   }),
   tagTypes: ['Borrow', 'Books'], // ✅ 'Books' tag included
   endpoints: (builder) => ({

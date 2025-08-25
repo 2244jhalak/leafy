@@ -1,4 +1,4 @@
-// src/pages/Borrow/BorrowPage.tsx
+
 import { useGetBookByIdQuery, useGetBooksQuery } from "@/redux/features/api/bookSlice";
 import { useBorrowBookMutation } from "@/redux/features/api/borrowSlice";
 import { useParams, useNavigate } from "react-router";

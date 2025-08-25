@@ -4,17 +4,17 @@ const NotFound = () => {
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center bg-gray-50 text-gray-800 px-4 overflow-hidden">
       
-      {/* Big 404 Text */}
+      
       <h1 className="text-8xl md:text-9xl font-extrabold text-green-600 animate-bounce z-10">
         404
       </h1>
 
-      {/* Fun message */}
+      
       <p className="mt-4 text-lg md:text-2xl font-semibold text-center z-10">
         Oops! Looks like this page went on an adventure 🚀
       </p>
 
-      {/* Optional illustration */}
+      
       <div className="my-6 z-10">
         <img
           src="https://cdn-icons-png.flaticon.com/512/564/564619.png"
@@ -23,14 +23,14 @@ const NotFound = () => {
         />
       </div>
 
-      {/* Back to Home button */}
+      
       <Link to="/">
         <button className="mt-4 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded shadow-lg transition duration-300 transform hover:scale-105 z-10">
           Go Back Home
         </button>
       </Link>
 
-      {/* Floating stars */}
+      
       {[...Array(20)].map((_, i) => (
         <div
           key={i}

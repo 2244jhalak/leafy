@@ -18,14 +18,14 @@ const Banner = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="text-3xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-white">
+            <h1 className="text-3xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-gray-900">
               Discover, Borrow <br /> & Enjoy Your Favorite Books
             </h1>
-            <p className="mb-6 text-lg md:text-xl text-gray-700 dark:text-gray-300">
+            <p className="mb-6 text-lg md:text-xl text-gray-700 dark:text-gray-700">
               Browse our curated collection of books, borrow easily, and dive into a world of stories.
             </p>
             <Link to="/books">
-              <button className="bg-black dark:bg-white dark:text-black rounded-xl text-white px-6 py-3 hover:bg-gray-800 dark:hover:bg-gray-200 transition shadow-lg">
+              <button className="cursor-pointer bg-black dark:bg-white dark:text-black rounded-xl text-white px-6 py-3 hover:bg-gray-800 dark:hover:bg-gray-200 transition shadow-lg">
                 Explore More
               </button>
             </Link>

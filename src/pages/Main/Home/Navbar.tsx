@@ -43,7 +43,7 @@ export default function Navbar() {
     <header className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white shadow sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex flex-row items-center">
-          <BookOpen className="text-green-600 dark:text-green-400" />
+          <Link to='/'><BookOpen className="text-green-600 dark:text-green-400" /></Link>
           <h1 className="text-2xl mb-1 font-semibold text-green-600 dark:text-green-400"><Link to='/'>Leafy</Link></h1>
         </div>
 

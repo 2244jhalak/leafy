@@ -19,10 +19,10 @@ if (isLoading) return <div className="flex justify-center items-center h-40">
       </div>;
 if (isError) return <p className="text-center text-red-500">Failed to load books.</p>;
 
-// data.data এর মধ্যে আবার data (array of books) আছে
+
 const books: Book[] = Array.isArray(data?.data?.data) ? data.data.data : [];
 
-// pagination info এখান থেকে নিচ্ছি
+
 const totalPages: number = data?.data?.totalPages || 1;
 
 

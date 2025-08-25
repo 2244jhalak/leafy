@@ -1,4 +1,4 @@
-// src/pages/Books/AddBookPage.tsx
+
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -204,7 +204,7 @@ const AddBook = () => {
             <Button
               onClick={handleSubmit}
               disabled={isLoading}
-              className="flex items-center justify-center gap-2"
+              className="flex items-center justify-center gap-2 cursor-pointer"
             >
               {isLoading ? (
                 <>

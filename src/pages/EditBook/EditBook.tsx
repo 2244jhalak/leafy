@@ -15,7 +15,9 @@ const EditBook = () => {
       <Navbar />
       <div className="min-h-screen bg-gray-50 p-6">
         {isLoading ? (
-          <Loader2 className="animate-spin w-8 h-8 text-primary" />
+          <div className="flex items-center justify-center">
+            <Loader2 className="animate-spin w-8 h-8 text-primary" />
+          </div>
         ) : isError ? (
           <p className="text-red-500">Failed to load book</p>
         ) : !bookToEdit ? (

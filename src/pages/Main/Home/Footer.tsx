@@ -8,10 +8,10 @@ export default function Footer() {
         
         {/* Brand Section */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <div className="flex items-center gap-2 mb-2">
-            <BookOpen className="text-green-500" />
+          <div className="flex items-center mb-2">
+            <Link to="/"><BookOpen className="text-green-500" /></Link>
             <span className="text-xl font-semibold text-green-500">
-              Leafy
+              <Link to="/">Leafy</Link>
             </span>
           </div>
           <p className="text-sm">

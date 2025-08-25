@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const apiSlice = createApi({
   reducerPath: 'api',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://b5-a3-rosy.vercel.app/api/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: `${import.meta.env.VITE_SERVER_LINK}/api/` }),
   tagTypes: ['Books'],
 
   endpoints: (builder) => ({
